@@ -1,0 +1,12 @@
+{
+  "name": "sync-manager",
+  "version": "0.0.1",
+  "description": "sync manager built in webassembly",
+  "main": "index.js",
+  "author": "Sean Stephens",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-run-command": "^0.0.9"
+  }
+}
