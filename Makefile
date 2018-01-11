@@ -1,5 +1,10 @@
 
-all: build
+all: clean build
+
+clean:
+	rm -rf ./build
+	rm -rf ./dist
 
 build:
-	emcc src/hello.c -s WASM=1 -o dist/hello.html
+	mkdir build
+	emcc src/main.c -s WASM=1 -o build/main.js
