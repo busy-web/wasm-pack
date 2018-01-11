@@ -3,9 +3,7 @@
  *
  * Builds webassembly files
  */
-//const rsvp = require('rsvp');
 const gulp = require("gulp");
-const livereload = require('livereload');
 const nodemon = require('gulp-nodemon');
 const spawn = require('child_process').spawn;
 
@@ -24,8 +22,8 @@ gulp.task("build", function () {
 });
 
 gulp.task("copy", ['build'], function() {
-	gulp.src(['build/*', 'src/index.html'])
-		.pipe(gulp.dest('dist/'))
+	gulp.src('src/index.html').pipe(gulp.dest('dist/'))
+	gulp.src('build/*').pipe(gulp.dest('dist/'));
 });
 
 gulp.task("serve", ['copy'], function() {
@@ -33,12 +31,8 @@ gulp.task("serve", ['copy'], function() {
 });
 
 gulp.task('watch', ['serve'], function() {
-	gulp.watch(['src/**/*.html'], ['copy-index']);
-	gulp.watch(['src/**/*.c'], ['copy']);
+	gulp.watch(['src/**/*.html', 'src/**/*.cpp'], ['copy']);
 });
 
-gulp.task('default', ['build', 'serve']);
+gulp.task('default', ['build']);
 
-const server = livereload.createServer({});
-
-server.watch(['dist/**/*.html', 'dist/**/*.js', 'dist/**/*.wasm']);

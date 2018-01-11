@@ -7,4 +7,4 @@ clean:
 
 build:
 	mkdir build
-	emcc src/main.c -s WASM=1 -o build/main.js
+	emcc src/main.cpp -s WASM=1 -o build/main.js
